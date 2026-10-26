@@ -92,15 +92,15 @@
             </div>
           </fieldset>
           <details class="dietary">
-            <summary>Dietary needs &amp; substitution requests <span class="private-tag">PRIVATE TO KJ</span></summary>
-            <p class="privacy-copy">Optional. Add a name only if you want KJ to know who to follow up with. These details are stored separately from the public vote totals.</p>
+            <summary>Dietary needs &amp; substitution requests <span class="private-tag">PRIVATE NOTES</span></summary>
+            <p class="privacy-copy">Optional. These notes are separate from public vote totals. Only an authorized Supabase project admin can read them; KJ needs a project invitation to view them himself.</p>
             <div class="fields">
               <div class="field"><label for="respondent-name">Your name <small>optional</small></label><input id="respondent-name" name="respondent_name" maxlength="80" autocomplete="name" placeholder="For KJ's follow-up"></div>
               <div class="field"><label for="allergy-details">Allergy or dietary need</label><textarea id="allergy-details" name="allergy_details" maxlength="500" placeholder="Ingredients to avoid or other dietary needs"></textarea></div>
               <div class="field"><label for="substitution-request">Substitution you'd like to request</label><textarea id="substitution-request" name="substitution_request" maxlength="500" placeholder="A swap you'd like the restaurant to consider"></textarea></div>
               <div class="field"><label for="additional-details">Other details for KJ</label><textarea id="additional-details" name="additional_details" maxlength="500" placeholder="Anything else KJ should know"></textarea></div>
             </div>
-            <p class="privacy-note">Only an authenticated Supabase project admin can read these private notes; they are not shown in public results. The restaurant must confirm ingredients, availability and cross-contact safety. A requested substitute is not guaranteed or certified allergy-safe.</p>
+            <p class="privacy-note">Only an authorized Supabase project admin can read these private notes; they are never shown in public results. KJ needs a Supabase project invitation to view them himself. The restaurant must confirm ingredients, availability and cross-contact safety. A requested substitute is not guaranteed or certified allergy-safe.</p>
           </details>
           <div class="actions">
             <button class="vote" id="vote-button" type="submit" disabled>Connect shared storage to vote</button>
