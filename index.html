@@ -197,16 +197,13 @@
         updated_at: new Date().toISOString()
       }, { onConflict: "poll_id,voter_id" });
       if (voteError) throw voteError;
-      const privateRequest = {
-        poll_id: POLL_ID,
-        voter_id: voterId,
-        respondent_name: form.elements.respondent_name.value.trim(),
-        allergy_details: form.elements.allergy_details.value.trim(),
-        substitution_request: form.elements.substitution_request.value.trim(),
-        additional_details: form.elements.additional_details.value.trim(),
-        updated_at: new Date().toISOString()
-      };
-      const { error: privateError } = await client.from("dinner_dietary_requests").upsert(privateRequest, { onConflict: "poll_id,voter_id" });
+      const { error: privateError } = await client.rpc("submit_kj_dietary_request", {
+        p_voter_id: voterId,
+        p_respondent_name: form.elements.respondent_name.value.trim(),
+        p_allergy_details: form.elements.allergy_details.value.trim(),
+        p_substitution_request: form.elements.substitution_request.value.trim(),
+        p_additional_details: form.elements.additional_details.value.trim()
+      });
       if (privateError) throw new Error(`Your meal vote was saved, but your private dietary details were not: ${privateError.message}`);
       await loadResults();
       setStatus("Your vote is saved in the shared poll. Any private notes are visible only to an authorized project admin.", "connected");
